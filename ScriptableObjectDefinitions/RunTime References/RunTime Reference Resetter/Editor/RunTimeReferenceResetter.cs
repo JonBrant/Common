@@ -17,9 +17,9 @@ namespace Com.PI.RunTimeReferences {
             if (ResourcePath == null) {
                 Debug.LogErrorFormat("RunTime Reference Resetter's Resource Path is not set! Edit this to path of folder holding RunTime References, relative (inside of) a Resource folder!" + "RunTime References will NOT be reset without this!");
             }
-
+            ObjectsToReset = Resources.LoadAll<RunTimeReferenceScriptableObject>(ResourcePath).ToList();
             if (AssetDatabase.IsValidFolder(ResourcePath)) {
-                ObjectsToReset = Resources.LoadAll<RunTimeReferenceScriptableObject>(ResourcePath).ToList();
+                
                 if (Debugging) {
                     Debug.LogFormat("{0} RunTime References loaded.", ObjectsToReset.Count);
                 }
